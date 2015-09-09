@@ -10,7 +10,7 @@ Main features:
 
 ## Example
 
-You can see this directive in action on [Plunker](http://plnkr.co/edit/zTEmRX5PtFhwyA93y8bY)
+You can see this directive in action on [Plunker](http://plnkr.co/edit/zTEmRX5PtFhwyA93y8bY?p=preview)
 
 
 ## Bower
