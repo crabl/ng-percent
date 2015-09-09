@@ -8,6 +8,11 @@ Main features:
 * Min and Max validators like input[number].
 * Enable/disable formatter using ng-percent={{var}}
 
+## Example
+
+You can see this directive in action on [Plunker](http://plnkr.co/edit/zTEmRX5PtFhwyA93y8bY)
+
+
 ## Bower
 
 You may install it via bower using
