@@ -43,29 +43,34 @@ angular.module('myApp', ['ng-percent']);
 
 >
 ``` html
-<input type="text" model="yourModel" ng-percent />
+<input type="text" ng-model="yourModel" ng-percent />
 ```
 
 + It is also possible to add 'min' and 'max' validations
 
 >
 ``` html
-<input type="text" model="yourModel" ng-percent min="1" max="1337" />
+<input type="text" ng-model="yourModel" ng-percent min="1" max="1337" />
 ```
 
 + If you want to be able to dynamically enable/disable validations from a controller you can use the following
 
 >
 ``` html
-<input type="text" model="yourModel" ng-percent min="1" max="1337" ng-required="true" />
+<input type="text" ng-model="yourModel" ng-percent min="1" max="1337" ng-required="true" />
 ```
 
 + Disable percent in field
 
 >
 ``` html
-<input type="text" model="yourModel" ng-percent={{isPercent}} />
+<input type="text" ng-model="yourModel" ng-percent={{isPercent}} />
 ```
+
+## Differences from ngCurrency
+
++ Currently, due to limitations in angular-percentage-filter, the `fraction` and `percent-symbol` attributes don't actually do anything. Don't use them.
++ This library does not support locales with different comma separators, etc. so don't expect it to format 1500.00% as 1 500,00% if you're in Quebec. Or anywhere else.
 
 
 
