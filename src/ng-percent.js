@@ -1,26 +1,26 @@
 /*
- * ng-currency
- * http://alaguirre.com/
+ * ng-percent
+ * http://crabl.net/
 
- * Version: 0.8.7 - 2015-06-11
+ * Version: 0.1.0 - 2015-09-09
  * License: MIT
  */
 
-angular.module('ng-currency', [])
-    .directive('ngCurrency', ['$filter', '$locale', function ($filter, $locale) {
+angular.module('ng-percent', ['percentage'])
+    .directive('ngPercent', ['$filter', '$locale', function ($filter, $locale) {
         return {
             require: 'ngModel',
             scope: {
                 min: '=min',
                 max: '=max',
-                currencySymbol: '@',
+                percentSymbol: '@',
                 ngRequired: '=ngRequired',
                 fraction: '=fraction'
             },
             link: function (scope, element, attrs, ngModel) {
-                
-                if (attrs.ngCurrency === 'false') return;
-                
+
+                if (attrs.ngPercent === 'false') return;
+
                 var fract = (typeof scope.fraction !== 'undefined')?scope.fraction:2;
 
                 function decimalRex(dChar) {
@@ -37,12 +37,12 @@ angular.module('ng-currency', [])
                     var cleared = null;
 
                     // Replace negative pattern to minus sign (-)
-                    var neg_dummy = $filter('currency')("-1", currencySymbol(), scope.fraction);
+                    var neg_dummy = $filter('percentage')("-1", scope.fraction, percentSymbol());
                     var neg_idx = neg_dummy.indexOf("1");
                     var neg_str = neg_dummy.substring(0,neg_idx);
                     value = value.replace(neg_str, "-");
 
-                    if(RegExp("^-[\\s]*$", 'g').test(value)) {
+                    if(RegExp("^-[\\s]*%", 'g').test(value)) {
                         value = "-0";
                     }
 
@@ -56,11 +56,11 @@ angular.module('ng-currency', [])
                     return cleared;
                 }
 
-                function currencySymbol() {
-                    if (angular.isDefined(scope.currencySymbol)) {
-                        return scope.currencySymbol;
+                function percentSymbol() {
+                    if (angular.isDefined(scope.percentSymbol)) {
+                        return scope.percentSymbol;
                     } else {
-                        return $locale.NUMBER_FORMATS.CURRENCY_SYM;
+                        return '%';
                     }
                 }
 
@@ -85,7 +85,7 @@ angular.module('ng-currency', [])
                     {
                         cVal = ".0";
                     }
-                    return parseFloat(cVal);
+                    return parseFloat(cVal) / 100;
                 });
 
                 element.on("blur", function () {
@@ -94,7 +94,7 @@ angular.module('ng-currency', [])
                 });
 
                 ngModel.$formatters.unshift(function (value) {
-                    return $filter('currency')(value, currencySymbol(), scope.fraction);
+                    return $filter('percentage')(value, scope.fraction, percentSymbol());
                 });
 
                 ngModel.$validators.min = function(cVal) {

@@ -1,4 +1,4 @@
-var app = angular.module('plunker', ['ng-currency']);
+var app = angular.module('plunker', ['ng-percent']);
 var scope;
 app.controller('MainCtrl', function($scope) {
       scope=$scope;

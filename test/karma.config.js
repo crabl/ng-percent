@@ -3,6 +3,7 @@
 
 module.exports = function(config) {
   config.set({
+    autoWatch: false,
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -13,10 +14,19 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
+    // plugins
+    plugins: [
+      'karma-phantomjs-launcher',
+      'karma-jasmine',
+      'karma-coverage',
+      'karma-mocha-reporter'
+    ],
+
 
     // list of files / patterns to load in the browser
     files: [
       '../bower_components/angular/angular.js',
+      '../bower_components/angular-percentage-filter/percentage.js',
       '../bower_components/angular-mocks/angular-mocks.js',
       '../src/*.js',
       './*.js'
@@ -25,7 +35,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      
+
     ],
 
 
@@ -39,11 +49,11 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['mocha', 'coverage'],
 
 
     // web server port
-    port: 9876,
+    port: 9877,
 
 
     // enable / disable colors in the output (reporters and logs)
@@ -61,7 +71,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

@@ -1,0 +1,33 @@
+{
+  "name": "ng-percent",
+  "version": "0.1.0",
+  "description": "ngPercent is a directive that enables seamless use of percent inputs.",
+  "main": "dist/ng-percent.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dist": "./node_modules/uglify-js/bin/uglifyjs src/ng-percent.js -o dist/ng-percent.min.js",
+    "test": "./node_modules/karma/bin/karma start ./test/karma.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crabl/ng-percent.git"
+  },
+  "author": "Chris Rabl <chris@crabl.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crabl/ng-percent/issues"
+  },
+  "homepage": "https://github.com/crabl/ng-percent#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.9",
+    "karma-coverage": "^0.5.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18",
+    "uglify-js": "^2.4.24"
+  }
+}
